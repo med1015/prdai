@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<form method="post" action=".">
+<div class="container text-center">
+  {% csrf_token %} 
+  {% for field in form %}
+    <div class="form-group" style="border-radius: 4px;">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+        
+    </div>
+{% endfor %}
+</div>
+	<div class="container text-center">	
+  <input class="btn btn-primary" type="submit" value="{% trans 'Submit' %}" />
+	</div>
+</form>
+{% endblock %}
